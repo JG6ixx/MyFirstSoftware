@@ -8,14 +8,13 @@ public class ClienteController {
 	
 	private List<Cliente>clientes = new ArrayList<>();
 	
-	public void cadastrarCliente(String nome, String telefone, String endereco, String sexo, 
+	public void cadastrarCliente(String nome, String telefone, String endereco, 
 			String email, long cpf ) {
 		
-		Cliente c = new Cliente(sexo, endereco, telefone, nome, email, cpf);
+		Cliente c = new Cliente(endereco, telefone, nome, email, cpf);
 		c.setNome(nome);
 		c.setTelefone(telefone);
 		c.setEndereco(endereco);
-		c.setSexo(sexo);
 		c.setEmail(email);
 		c.setCpf(cpf);
 		clientes.add(c);

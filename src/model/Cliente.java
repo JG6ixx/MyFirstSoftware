@@ -8,12 +8,11 @@ public class Cliente {
 	private long id;
 	private String endereco;
 	private long cpf;
-	private String sexo;
 	private String email;
 
 	
 	
-	public Cliente(String nome, String telefone, String endereco,String sexo, String email, long cpf) {
+	public Cliente(String nome, String telefone, String endereco, String email, long cpf) {
 		
 		
 		contador++;
@@ -22,7 +21,6 @@ public class Cliente {
 		this.endereco = telefone;
 		this.cpf = cpf;
 		this.email = email;
-		this.sexo = sexo;
 		this.id = contador;
 		
 		
@@ -58,12 +56,6 @@ public class Cliente {
 	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
 	public String getEmail() {
 		return email;
 	}
@@ -73,7 +65,7 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [nome=" + nome + ", telefone=" + telefone + ", id=" + id + ", endereco=" + endereco + ", cpf="
-				+ cpf + ", sexo=" + sexo + ", email=" + email + "]";
+				+ cpf + ", email=" + email + "]";
 	}
 	
 
