@@ -1,18 +1,20 @@
 package model;
 
+import java.math.BigInteger;
+
 public class Cliente {
 	
 	private String nome;
 	private String telefone;
-	private static long contador = 0;
-	private long id;
+	private static int contador = 0;
+	private int id;
 	private String endereco;
-	private long cpf;
+	private String cpf;
 	private String email;
 
 	
 	
-	public Cliente(String nome, String telefone, String endereco, String email, long cpf) {
+	public Cliente(String nome, String telefone, String endereco, String email, String cpf) {
 		
 		
 		contador++;
@@ -38,8 +40,12 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public long getId() {
+	public int getId() {
 		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 	
 	
@@ -50,10 +56,10 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 	
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 	public String getEmail() {
