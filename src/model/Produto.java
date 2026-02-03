@@ -5,8 +5,8 @@ public class Produto {
 	private String nomeP;
 	private String descricao;
 	private double valor;
-	private long codigoP;
-	private static long contP = 0;
+	private int id_produto;
+	private static int contP = 0;
 	
 	
 	public Produto(String nomeP, String descricao, double valor) {
@@ -14,7 +14,7 @@ public class Produto {
 		this.nomeP =  nomeP;
 		this.descricao = descricao;
 		this.valor = valor; 
-		this.codigoP = contP;
+		this.id_produto = contP;
 		
 	}
 
@@ -49,19 +49,19 @@ public class Produto {
 	}
 
 
-	public long getCodigoP() {
-		return codigoP;
+	public int getId_Produto() {
+		return id_produto;
 	}
 
 
-	public void setCodigoP(long codigoP) {
-		this.codigoP = codigoP;
+	public void setId_Produto(int id_produto) {
+		this.id_produto = id_produto;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Produto [nomeP=" + nomeP + ", descricao=" + descricao + ", valor=" + valor + ", codigoP=" + codigoP
+		return "Produto [nomeP=" + nomeP + ", descricao=" + descricao + ", valor=" + valor + ", id_produto=" + id_produto
 				+ "]";
 	}
 	
