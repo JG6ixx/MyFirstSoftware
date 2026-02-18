@@ -4,14 +4,16 @@ public class Vendedor {
 	
 	private String nome;
 	private String telefone;
-	private static int cont = 0;
 	private int id;
+	private String senha;
+	private String usuario;
 	
 	public Vendedor(String nome, String telefone) {
-		cont++;
-		this.id = cont;
+		
 		this.nome = nome;
 		this.telefone = telefone;
+	//	this.usuario = usuario;
+		//this.senha = senha;
 	}
 	
 	public String getNome() {
@@ -38,10 +40,25 @@ public class Vendedor {
 		this.id = id;
 	}
 
-	@Override
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	} 
+	
 	public String toString() {
 		return "Vendedor [nome=" + nome + ", telefone=" + telefone + ", id=" + id + "]";
-	} 
+	}
 	
 	
 }

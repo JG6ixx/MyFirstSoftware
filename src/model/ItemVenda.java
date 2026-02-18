@@ -1,10 +1,10 @@
 package model;
 
 public class ItemVenda {
-	private static int cont = 0;
-	private int idItemVenda;
+	
 	private int quantidade;
 	private double subtotal;
+	private int desconto;
 	private Produto produto;
 	
 	
@@ -12,11 +12,11 @@ public class ItemVenda {
 	
 	
 	
-	public ItemVenda(int quantidade, Produto produto) {
-		cont++;
-		this.idItemVenda = cont;
+	public ItemVenda(int quantidade, Produto produto, int desconto) {
+	
 		this.produto = produto;
 		this.quantidade = quantidade;
+		this.desconto = desconto;
 		calcularSubtotal();
 		
 	
@@ -24,12 +24,8 @@ public class ItemVenda {
 	
 	
 	public void calcularSubtotal() {
-		this.subtotal = produto.getValor()*quantidade;
-	}
-	
-	
-	public int getIdItemVenda() {
-		return idItemVenda;
+		subtotal = produto.getValor()*quantidade;
+		this.subtotal = subtotal - ((subtotal*desconto)/100);
 	}
 	
 	public int getQuantidade() {
@@ -46,6 +42,20 @@ public class ItemVenda {
 	public Produto getProduto() {
 		return produto;
 	}
+	
+	public int getDesconto() {
+		return desconto;
+	}
+
+
+
+	public void setDesconto(int desconto) {
+		this.desconto = desconto;
+	}
+	
+
+
+	
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 		calcularSubtotal();
@@ -55,7 +65,14 @@ public class ItemVenda {
 
 	@Override
 	public String toString() {
-		return "ItemVenda [idItemVenda=" + idItemVenda + ", quantidade=" + quantidade + ", subtotal=" + subtotal
+		return "ItemVenda [ quantidade=" + quantidade + ", subtotal=" + subtotal + ", desconto=" + desconto
 				+ ", produto=" + produto + "]";
 	}
+
+
+
+
+
+
+
 }

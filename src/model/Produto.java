@@ -6,18 +6,16 @@ public class Produto {
 	private String descricao;
 	private double valor;
 	private int id_produto;
-	private static int contP = 0;
+	
 	
 	
 	public Produto(String nomeP, String descricao, double valor) {
-		contP++;
 		this.nomeP =  nomeP;
 		this.descricao = descricao;
 		this.valor = valor; 
-		this.id_produto = contP;
 		
 	}
-
+	
 
 	public String getNomeP() {
 		return nomeP;
@@ -61,9 +59,12 @@ public class Produto {
 
 	@Override
 	public String toString() {
-		return "Produto [nomeP=" + nomeP + ", descricao=" + descricao + ", valor=" + valor + ", id_produto=" + id_produto
-				+ "]";
+	    return "Produto cadastrado:\n" +
+	           "Nome: " + nomeP + "\n" +
+	           "Descrição: " + descricao + "\n" +
+	           "Valor: R$ " + valor + "\n";
 	}
+
 	
 	
 	

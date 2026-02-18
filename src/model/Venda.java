@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Venda {
 	
-	private static int cont = 0;
+
 	private String formaPagamento;
 	private Vendedor vendedor;
 	private String data;
@@ -15,8 +15,7 @@ public class Venda {
 	private List<ItemVenda> itens =  new ArrayList<>();
 	
 	public Venda (String formaPagamento, Vendedor vendedor, Cliente cliente, String data) {
-		cont++;
-		this.id = cont;
+		
 		this.data = data;
 		this.formaPagamento = formaPagamento;
 		this.cliente = cliente;
@@ -68,6 +67,14 @@ public class Venda {
 	public void setTotal(double total) {
 		this.total = total;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -90,5 +97,7 @@ public class Venda {
 		return "Venda [formaPagamento=" + formaPagamento + ", vendedor=" + vendedor + ", data=" + data + ", id=" + id
 				+ ", total=" + total + ", cliente=" + cliente + ", itens=" + itens + "]";
 	}
+
+	
 
 }

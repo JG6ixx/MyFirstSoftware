@@ -1,12 +1,11 @@
 package model;
 
-import java.math.BigInteger;
+
 
 public class Cliente {
 	
 	private String nome;
 	private String telefone;
-	private static int contador = 0;
 	private int id;
 	private String endereco;
 	private String cpf;
@@ -17,17 +16,19 @@ public class Cliente {
 	public Cliente(String nome, String telefone, String endereco, String email, String cpf) {
 		
 		
-		contador++;
+		
 		this.endereco = endereco;
 		this.nome = nome;
-		this.endereco = telefone;
+		this.telefone = telefone;
 		this.cpf = cpf;
 		this.email = email;
-		this.id = contador;
+		
 		
 		
 		
 	}	
+	
+
 	public String getNome() {
 		return nome;
 	}
@@ -40,14 +41,6 @@ public class Cliente {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public int getId() {
-		return id;
-	}
-	
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	
 	public String getEndereco() {
 		return endereco;
@@ -68,11 +61,29 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Cliente [nome=" + nome + ", telefone=" + telefone + ", id=" + id + ", endereco=" + endereco + ", cpf="
-				+ cpf + ", email=" + email + "]";
+		return "Cliente cadastrado:\n" +
+		           "Nome: " + nome + "\n" +
+		           "Telefone: " + telefone + "\n" +
+		           "Endereco: " + endereco + "\n" +
+		           "Email:  " + email + "\n" +
+		           "CPF:  " + cpf + "\n";
+	
+	
 	}
+	
 	
 
 }

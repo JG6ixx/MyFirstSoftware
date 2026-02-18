@@ -1,75 +1,108 @@
 package view;
 
-import java.awt.Container;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
+import control.ClienteController;
 
 public class CadastroCliente extends JFrame implements ActionListener {
 
-	private Container container;
-	private JButton bEnviar;
-	private JButton bResetar;
-	private JButton bVoltar;
-	private JLabel nome;
-	private JTextField tNome;
-	private JLabel telefone;
-	private JTextField tTelefone;
-	private JLabel endereco;
-	private JTextField tEndereco;
-	private JLabel id;
-	private ArrayList cliente;
-	private JTextArea mensagem;
+    private MenuCadastro menuCadastro;
+    private ClienteController clienteController = new ClienteController();
 
-	public CadastroCliente(MenuCadastro menuCadastro) {
-		
-		setTitle("Cadastro de Cliente");
-		setBounds(300, 30, 500, 500);
+    private JTextField tNome;
+    private JTextField tTelefone;
+    private JTextField tEndereco;
+    private JTextField tCpf;
+    private JTextField tEmail;
+    private JTextArea mensagem;
+
+    private JButton btnSalvar;
+    private JButton btnCancelar;
+
+    public CadastroCliente(MenuCadastro menuCadastro) {
+        super("Cadastro de Cliente");
+        this.menuCadastro = menuCadastro;
+
+        // Inicializando componentes
+        tNome = new JTextField(2);
+        tTelefone = new JTextField(2);
+        tEndereco = new JTextField(2);
+        tCpf = new JTextField(2);
+        tEmail = new JTextField(2);
+        mensagem = new JTextArea(5, 20);
+
+        btnSalvar = new JButton("Salvar");
+        btnCancelar = new JButton("Cancelar");
+
+        // Registrar listeners
+        btnSalvar.addActionListener(this);
+        btnCancelar.addActionListener(this);
+
+        // Painel principal (vertical)
+        JPanel panelForm = new JPanel();
+        panelForm.setLayout(new BoxLayout(panelForm, BoxLayout.Y_AXIS));
+
+        panelForm.add(new JLabel("Nome:"));
+        panelForm.add( tNome);
+
+        panelForm.add(new JLabel("Telefone:"));
+        panelForm.add(tTelefone);
+
+        panelForm.add(new JLabel("Endereço:"));
+        panelForm.add(tEndereco);
+        
+        panelForm.add(new JLabel("CPF:"));
+        panelForm.add(tCpf);
+
+        panelForm.add(new JLabel("Email:"));
+        panelForm.add(tEmail);
+
+        panelForm.add(new JLabel("Mensagem:"));
+        panelForm.add(new JScrollPane(mensagem));
+
+        // Painel dos botões
+        JPanel panelBotoes = new JPanel(new FlowLayout());
+        panelBotoes.add(btnSalvar);
+        panelBotoes.add(btnCancelar);
+
+        // Layout principal
+        setLayout(new BorderLayout());
+        add(panelForm, BorderLayout.CENTER);
+        add(panelBotoes, BorderLayout.SOUTH);
+
+        // Configurações da janela
+        setBounds(300, 30, 400, 400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
-        
-        container = getContentPane();
-        container.setLayout(null);
-		
-        nome =  new JLabel("Nome");
-        nome.setFont(new Font("Arial",Font.PLAIN, 15));
-        nome.setSize(100, 20);
-        nome.setLocation(100, 100);
-        container.add(nome);
-        
-        tNome =  new JTextField ("");
-        tNome.setFont(new Font("Arial", Font.PLAIN, 15));
-        tNome.setSize(230, 25);
-        tNome.setLocation(150, 100);
-        container.add(tNome);   
-        
-        telefone= new JLabel("Telefone");
-        telefone.setFont(new Font("Arial", Font.PLAIN, 15));
-        telefone.setSize(100, 20);
-        telefone.setLocation(100, 150);
-        container.add(telefone);
-        
-        tTelefone = new JTextField("");
-        tTelefone.setFont(new Font("Afrial", Font.PLAIN, 15));
-        tTelefone.setSize(230,25);
-        tTelefone.setLocation(170, 150);
-        container.add(tTelefone);
-        
-        
         setVisible(true);
-	}
+    }
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    	try {
+    		if (e.getSource() == btnSalvar) {
+                clienteController.cadastrarCliente(tNome.getText(), tCpf.getText(), tTelefone.getText(),  tEmail.getText() ,tEndereco.getText() );
+                		
 
-	}
+               JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
+               mensagem.append("Cliente cadastrado:\n");
+               mensagem.append(clienteController.ultimoClienteToString());
+            }
 
+        	
+
+            if (e.getSource() == btnCancelar) {
+                menuCadastro.setVisible(true);
+                dispose();
+    	}
+    	
+        }catch(Exception ex) {
+            JOptionPane.showMessageDialog(this, "Erro na transferencia de dados!");
+
+        }
+    }
 }
+

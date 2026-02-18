@@ -15,7 +15,7 @@ public class Menu extends JFrame implements ActionListener {
     public Menu() {
 
         setTitle("Tela Inicial");
-        setBounds(200, 90, 200, 400);
+        setBounds(200, 90, 400, 400);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -23,17 +23,17 @@ public class Menu extends JFrame implements ActionListener {
         container.setLayout(null);
 
         bVender = new JButton("Vender");
-        bVender.setBounds(50, 50, 100, 50);
+        bVender.setBounds(150, 50, 100, 50);
         bVender.addActionListener(this);
         container.add(bVender);
 
         bCadastrar = new JButton("Cadastrar");
-        bCadastrar.setBounds(50, 120, 100, 50);
+        bCadastrar.setBounds(150, 120, 100, 50);
         bCadastrar.addActionListener(this);
         container.add(bCadastrar);
 
         bConsultar = new JButton("Consultar");
-        bConsultar.setBounds(50, 190, 100, 50);
+        bConsultar.setBounds(150, 190, 100, 50);
         bConsultar.addActionListener(this);
         container.add(bConsultar);
 

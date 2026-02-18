@@ -1,19 +1,40 @@
+
 package control;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import banco.Conexao;
 import model.Produto;
-public class ProdutoController {
-	
-	private List<Produto> produtos = new ArrayList<>();
-	
-	public void cadastrarProduto(String nomeP, String descricao, double valor) {
-		
-		Produto p = new Produto(nomeP, descricao, valor);
-		p.setNomeP(nomeP);
-		p.setDescricao(descricao);
-		p.setValor(valor);
-		produtos.add(p);
-	}
 
+public class ProdutoController {
+
+    private List<Produto> produtos = new ArrayList<>();
+	private ConexaoController conexaoController = new ConexaoController(new Conexao());
+
+
+    public Produto cadastrarProduto(String nomeP, String descricao, double valor) {
+        Produto p = new Produto(nomeP, descricao, valor);
+        produtos.add(p);
+        conexaoController.inserirProduto(p);
+        
+        return p;
+    }
+
+    public List<Produto> listarProdutos() {
+        return produtos;
+    }
+    
+    public String ultimoProdutoToString() {
+        if (produtos.isEmpty()) {
+            return "Nenhum produto cadastrado.";
+        }
+
+        Produto ultimo = produtos.get(produtos.size() - 1);
+        return ultimo.toString();
+    }
+
+
+	
 }
+
