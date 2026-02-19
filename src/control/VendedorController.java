@@ -11,7 +11,9 @@ public class VendedorController {
 
     private List<Vendedor> vendedores = new ArrayList<>();
 	private ConexaoController conexaoController = new ConexaoController(new Conexao()); 
-
+//Metodo que faz o mesmo que o ClienteController
+	
+	//Serve para como ligascao entre o Controller da Conexao e view
 
     public Vendedor cadastrarVendedor(String nome, String telefone) {
 

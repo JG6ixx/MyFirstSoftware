@@ -8,6 +8,8 @@ public class Vendedor {
 	private String senha;
 	private String usuario;
 	
+	public Vendedor() {}
+	
 	public Vendedor(String nome, String telefone) {
 		
 		this.nome = nome;
@@ -58,8 +60,7 @@ public class Vendedor {
 	
 	public String toString() {
 		return 
-		            nome + "\n" +" "+
-		           "Telefone: " + telefone + "\n";
+		           "Cod: " + id +" "+ " | " + " "+ nome ;
 	}
 	
 	

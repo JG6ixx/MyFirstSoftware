@@ -21,7 +21,7 @@ import control.VendedorController;
 
 public class CadastroVendedor  extends JFrame implements ActionListener{
 	
-	private MenuCadastro menuCadastro;
+	
     private VendedorController vendedorController = new VendedorController();
 
     private JTextField tNome;
@@ -30,15 +30,16 @@ public class CadastroVendedor  extends JFrame implements ActionListener{
 
     private JButton btnSalvar;
     private JButton btnCancelar;
+	private Menu menu;
 
-    public CadastroVendedor(MenuCadastro menuCadastro) {
+    public CadastroVendedor(Menu menu) {
         super("Cadastro de Vendedor");
-        this.menuCadastro = menuCadastro;
+        this.menu = menu;
 
         // Inicializando componentes
-        tNome = new JTextField(2);
-        tTelefone = new JTextField(2);
-        mensagem = new JTextArea(5, 20);
+        tNome = new JTextField(30);
+        tTelefone = new JTextField(30);
+        mensagem = new JTextArea(8, 20);
 
         btnSalvar = new JButton("Salvar");
         btnCancelar = new JButton("Cancelar");
@@ -48,30 +49,30 @@ public class CadastroVendedor  extends JFrame implements ActionListener{
         btnCancelar.addActionListener(this);
 
         // Painel principal (vertical)
-        JPanel panelForm = new JPanel();
-        panelForm.setLayout(new BoxLayout(panelForm, BoxLayout.Y_AXIS));
+        JPanel painel = new JPanel(new FlowLayout());
+        painel.setLayout(new FlowLayout());
 
-        panelForm.add(new JLabel("Nome:"));
-        panelForm.add( tNome);
+        painel.add(new JLabel("Nome:"));
+        painel.add( tNome);
 
-        panelForm.add(new JLabel("Telefone:"));
-        panelForm.add(tTelefone);
+        painel.add(new JLabel("Telefone:"));
+        painel.add(tTelefone);
 
-        panelForm.add(new JLabel("Mensagem:"));
-        panelForm.add(new JScrollPane(mensagem));
+        painel.add(new JLabel("Mensagem:"));
+        painel.add(new JScrollPane(mensagem));
 
         // Painel dos botões
-        JPanel panelBotoes = new JPanel(new FlowLayout());
-        panelBotoes.add(btnSalvar);
-        panelBotoes.add(btnCancelar);
+        JPanel painelBotoes = new JPanel(new FlowLayout());
+        painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnCancelar);
 
         // Layout principal
         setLayout(new BorderLayout());
-        add(panelForm, BorderLayout.BEFORE_FIRST_LINE);
-        add(panelBotoes, BorderLayout.SOUTH);
+        add(painel, BorderLayout.BEFORE_FIRST_LINE);
+        add(painelBotoes, BorderLayout.SOUTH);
 
         // Configurações da janela
-        setBounds(300, 30, 350, 350);
+        setBounds(300, 30, 400,400);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setVisible(true);
@@ -92,7 +93,7 @@ public class CadastroVendedor  extends JFrame implements ActionListener{
         	
 
             if (e.getSource() == btnCancelar) {
-                menuCadastro.setVisible(true);
+                menu.setVisible(true);
                 dispose();
     	}
     	

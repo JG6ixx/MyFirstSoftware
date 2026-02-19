@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
-
+// Cria a conexao com o postgre e banco
 	private String driver = "org.postgresql.Driver";
 	private String user = "postgres";
 	private String senha = "21122661";
@@ -22,7 +22,7 @@ public class Conexao {
 		}
 		catch (ClassNotFoundException ex)
 		{
-			System.err.print(ex.getMessage());
+			System.err.print(ex.getMessage());/////
 		} 
 		catch (SQLException e)
 		{

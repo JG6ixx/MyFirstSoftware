@@ -17,6 +17,7 @@ public class ItemVenda {
 		this.produto = produto;
 		this.quantidade = quantidade;
 		this.desconto = desconto;
+		this.subtotal = subtotal;
 		calcularSubtotal();
 		
 	
@@ -38,7 +39,9 @@ public class ItemVenda {
 	public double getSubtotal() {
 		return subtotal;
 	}
-	
+	public void setSubtotal(double subtotal) {
+		this.subtotal = subtotal;
+	}
 	public Produto getProduto() {
 		return produto;
 	}
@@ -68,6 +71,17 @@ public class ItemVenda {
 		return "ItemVenda [ quantidade=" + quantidade + ", subtotal=" + subtotal + ", desconto=" + desconto
 				+ ", produto=" + produto + "]";
 	}
+
+
+
+	
+
+
+
+	
+
+
+	
 
 
 

@@ -16,11 +16,11 @@ public class VendaController {
 
         Venda vd = new Venda(formaPagamento, vendedor, cliente, data);
 
-        vendas.add(vd); // GUARDA a venda
+        vendas.add(vd); // Guarda a venda 
 
         return vd;
     }
-
+//Metodo chamado na view que chama o metodo de aadicionar ItemVenda
     public void adicionarItemNaVenda(Venda venda, ItemVenda item) {
         venda.adicionarItem(item);
     }

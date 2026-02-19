@@ -12,7 +12,7 @@ public class Cliente {
 	private String email;
 
 	
-	
+	public Cliente() {}
 	public Cliente(String nome, String telefone, String endereco, String email, String cpf) {
 		
 		
@@ -74,11 +74,7 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		return 		 nome + "\n" + " "+
-		           "Telefone: " + telefone + "\n" +
-		           "Endereco: " + endereco + "\n" +
-		           "Email:  " + email + "\n" +
-		           "CPF:  " + cpf + "\n";
+		return 		"Cod:"+ " " + id + " | " + " " + nome + "\n" ;
 	
 	
 	}

@@ -11,55 +11,56 @@ import control.ProdutoController;
 public class CadastroProduto extends JFrame implements ActionListener {
 
 	private ProdutoController produtoController =  new ProdutoController();
-	private MenuCadastro menuCadastro;
+	private Menu menu;
 	private JTextField nomeP;
-    private JTextArea descricao;
+    private JTextField descricao;
     private JTextField valor;
     private JTextArea mensagem;
 
     private JButton btnSalvar;
     private JButton btnCancelar;
 
-    public CadastroProduto(MenuCadastro menuCadastro) {
-    	this.menuCadastro = menuCadastro;
+    public CadastroProduto(Menu menu) {
+    	
         super("Cadastro de Produto");
-
+        this.menu = menu;
         // Inicializando componentes
-        nomeP = new JTextField(2);
-        descricao = new JTextArea(2, 20);
-        valor = new JTextField(2);
-        mensagem = new JTextArea(5, 20);
+        nomeP = new JTextField(30);
+        descricao = new JTextField(30);
+        valor = new JTextField(30);
+        mensagem = new JTextArea(8, 20);
 
         btnSalvar = new JButton("Salvar");
         btnCancelar = new JButton("Cancelar");
+        
         btnSalvar.addActionListener(this);
         btnCancelar.addActionListener(this);
 
-        // Painel principal (vertical)
-        JPanel panelForm = new JPanel();
-        panelForm.setLayout(new BoxLayout(panelForm, BoxLayout.Y_AXIS));
+        // Painel das JTextFiel e JTextArea - componentes de entrada(nomep, descricao, valor, mensagem)
+        JPanel painel = new JPanel(new FlowLayout());
+        painel.setLayout(new FlowLayout());
 
-        panelForm.add(new JLabel("Produto:"));
-        panelForm.add(new JScrollPane(nomeP));
+        painel.add(new JLabel("Produto:"));
+        painel.add(nomeP);
 
-        panelForm.add(new JLabel("Descrição:"));
-        panelForm.add(new JScrollPane(descricao));
+        painel.add(new JLabel("Descrição:"));
+        painel.add(descricao);
 
-        panelForm.add(new JLabel("Valor:"));
-        panelForm.add(new JScrollPane(valor));
+        painel.add(new JLabel("Valor:"));
+        painel.add(valor);
 
-        panelForm.add(new JLabel("Mensagem:"));
-        panelForm.add(new JScrollPane(mensagem));
+        painel.add(new JLabel("Mensagem:"));
+        painel.add(mensagem);
 
         // Painel dos botões
-        JPanel panelBotoes = new JPanel(new FlowLayout());
-        panelBotoes.add(btnSalvar);
-        panelBotoes.add(btnCancelar);
+        JPanel painelBotoes = new JPanel(new FlowLayout());
+        painelBotoes.add(btnSalvar);
+        painelBotoes.add(btnCancelar);
 
-        // Layout principal
+        //Painel que une os outros paineis 
         setLayout(new BorderLayout());
-        add(panelForm, BorderLayout.CENTER);
-        add(panelBotoes, BorderLayout.SOUTH);
+        add(painel, BorderLayout.CENTER);
+        add(painelBotoes, BorderLayout.SOUTH);
 
         // Configurações da janela
         setBounds(300, 30, 400, 300);
@@ -75,7 +76,7 @@ public class CadastroProduto extends JFrame implements ActionListener {
 				produtoController.cadastrarProduto(nomeP.getText(), descricao.getText(), Double.parseDouble(valor.getText()));
 				JOptionPane.showMessageDialog(this, "Produto cadastrado!!");
 
-			    mensagem.setText(""); // limpa antes
+			    mensagem.setText(""); 
 			    mensagem.append("Produto cadastrado:\n");
 			    mensagem.append(produtoController.ultimoProdutoToString());
 			    
@@ -83,7 +84,7 @@ public class CadastroProduto extends JFrame implements ActionListener {
 			}
 			
 			if(e.getSource() == btnCancelar) {
-				menuCadastro.setVisible(true); // ✅ menu existente
+				menu.setVisible(true); // Volta Para o menu de cadastro
 	            dispose();  
 				
 			}

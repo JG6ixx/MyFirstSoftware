@@ -22,7 +22,7 @@ public class ProdutoController {
     }
 
     public List<Produto> listarProdutos() {
-        return conexaoController.buscarProdutos(); // ✅ banco de dados
+        return conexaoController.listarProdutos(); // ✅ banco de dados
     }
 
     

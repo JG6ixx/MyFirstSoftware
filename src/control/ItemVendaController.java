@@ -5,7 +5,7 @@ import model.Produto;
 import model.Venda;
 
 public class ItemVendaController {
-
+// Esta classe trata excessoes para que o ItemVenda seja adicionado aVenda de forma certa 
     public ItemVenda criarItemVenda(int quantidade, Produto produto, int desconto) {
 
         if (quantidade <= 0) {

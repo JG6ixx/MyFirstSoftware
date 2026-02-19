@@ -56,11 +56,10 @@ public class Produto {
 		this.id_produto = id_produto;
 	}
 
-
-	@Override
+	
 	public String toString() {
-	    return nomeP + "\n" +
-	            " " + descricao + "\n" +
+	    return "Cod:"+ " "+ id_produto + "|" + " " + nomeP + "\n" +
+	            " | " + descricao + "\n" + "|" +
 	           "R$ " + valor + "\n";
 	}
 
