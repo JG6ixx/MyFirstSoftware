@@ -14,6 +14,8 @@ public class Venda {
 	private Cliente cliente;
 	private List<ItemVenda> itens =  new ArrayList<>();
 	
+	public Venda() {}
+	
 	public Venda (String formaPagamento, Vendedor vendedor, Cliente cliente, String data) {
 		
 		this.data = data;
@@ -24,6 +26,8 @@ public class Venda {
 		
 	}
 	
+	
+
 	public void adicionarItem(ItemVenda item) {
 		this.itens.add(item);
 		calcularTotal();

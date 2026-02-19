@@ -22,8 +22,9 @@ public class ProdutoController {
     }
 
     public List<Produto> listarProdutos() {
-        return produtos;
+        return conexaoController.buscarProdutos(); // ✅ banco de dados
     }
+
     
     public String ultimoProdutoToString() {
         if (produtos.isEmpty()) {

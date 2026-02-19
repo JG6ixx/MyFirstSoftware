@@ -57,7 +57,9 @@ public class Vendedor {
 	} 
 	
 	public String toString() {
-		return "Vendedor [nome=" + nome + ", telefone=" + telefone + ", id=" + id + "]";
+		return "Vendedor cadastrado:\n" +
+		           "Nome: " + nome + "\n" +
+		           "Telefone: " + telefone + "\n";
 	}
 	
 	

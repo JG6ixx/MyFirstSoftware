@@ -59,10 +59,9 @@ public class Produto {
 
 	@Override
 	public String toString() {
-	    return "Produto cadastrado:\n" +
-	           "Nome: " + nomeP + "\n" +
-	           "Descrição: " + descricao + "\n" +
-	           "Valor: R$ " + valor + "\n";
+	    return nomeP + "\n" +
+	            " " + descricao + "\n" +
+	           "R$ " + valor + "\n";
 	}
 
 	

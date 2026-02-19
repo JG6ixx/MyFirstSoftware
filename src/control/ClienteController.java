@@ -28,9 +28,10 @@ public class ClienteController {
 		
 	}
 	
-	 public List<Cliente> listarClientes() {
-	        return clientes;
-	    }
+	public List<Cliente> listarClientes() {
+        return conexaoController.buscarClientePorId(); // ✅ banco de dados
+    }
+
 	
 	
 	  public String ultimoClienteToString() {
