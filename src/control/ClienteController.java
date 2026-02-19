@@ -29,7 +29,7 @@ public class ClienteController {
 	}
 	
 	public List<Cliente> listarClientes() {
-        return conexaoController.buscarClientePorId(); // ✅ banco de dados
+        return conexaoController.listarCliente(); // ✅ banco de dados
     }
 
 	

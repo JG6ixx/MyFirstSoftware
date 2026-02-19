@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import banco.Conexao;
 import java.awt.*;
+import java.time.LocalDate;
 import java.util.List;
 import control.*;
 import model.*;
@@ -127,7 +128,7 @@ public class Tvender extends JFrame {
     }
 
     private void carregarVendedores() {
-        List<Vendedor> vendedores = vendedorController.listarVendedores();
+        List<Vendedor> vendedores = vendedorController.listarVendedor();
         for (Vendedor v : vendedores) cbVendedores.addItem(v);
     }
 
@@ -159,6 +160,7 @@ public class Tvender extends JFrame {
         }
 
         lblTotal.setText("R$ " + String.format("%.2f", total));
+        
     }
 
     private void finalizarVenda() {
@@ -169,15 +171,27 @@ public class Tvender extends JFrame {
         String formaPagamento = rbPix.isSelected() ? "PIX" :
                                 rbCartao.isSelected() ? "Cartão" : "Dinheiro";
 
-        int descontoVenda = Integer.parseInt(txtDescontoVenda.getText());
-
         vendaAtual.setCliente(cliente);
         vendaAtual.setVendedor(vendedor);
         vendaAtual.setFormaPagamento(formaPagamento);
-       
-        vendaAtual.setTotal(Double.parseDouble(lblTotal.getText().replace("R$", "").trim()));
+
+        vendaAtual.setData(LocalDate.now().toString());
+ 
+
+        String totalTexto = lblTotal.getText()
+                .replace("R$", "")
+                .replace(",", ".")
+                .trim();
+
+        vendaAtual.setTotal(Double.parseDouble(totalTexto));
 
         int idVenda = conexaoController.inserirVenda(vendaAtual);
+
+        if (idVenda == 0) {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar venda!");
+            return;
+        }
+
         vendaAtual.setId(idVenda);
 
         conexaoController.inserirItem_Venda(vendaAtual);
@@ -185,6 +199,8 @@ public class Tvender extends JFrame {
         JOptionPane.showMessageDialog(this, "Venda salva com sucesso!");
         dispose();
     }
+
+    
 }
  
 

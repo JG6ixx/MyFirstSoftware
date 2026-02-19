@@ -24,8 +24,8 @@ public class VendedorController {
         return v;
     }
 
-    public List<Vendedor> listarVendedores() {
-        return vendedores;
+    public List<Vendedor> listarVendedor() {
+        return conexaoController.listarVendedor();
     }
     
     
